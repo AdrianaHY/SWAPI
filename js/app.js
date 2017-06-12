@@ -4,22 +4,13 @@ var cargarPagina = function(){
 
 // todo esto es para no realizar el servidor
 var  cargarPersonajes = function(){
-  //información que necesitamos del API
-  $.ajax("http://swapi.co/api/people/",{
-    method:"GET",//porque necesitamos obtener información
-    dataType:"json",
-    //métodos. ambos reciben un parámetro
-    //e cliente lanza un request, el servidor recibe un response.
-    success: function(response){
-      // hay que checar el api para ver como obtener lo que se requiere
-      var personajes = response.results;
-      var total = response.count;
-      mostrarTotalPersonajes(total);
-      mostrarPersonajes(personajes);
-    },
-    error: function(error){
-      console.log("error",error);
-    }
+  var url = "http://swapi.co/api/people/";
+  //recibe dos parámetros, el primero es la url y luego la función del success
+  $.get(url, function(response){
+    var personajes = response.results;
+    var total = response.count;
+    mostrarTotalPersonajes(total);
+    mostrarPersonajes(personajes);
   });
 };
 
