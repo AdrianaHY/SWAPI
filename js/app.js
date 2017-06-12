@@ -6,7 +6,8 @@ var cargarPagina = function(){
 var  cargarPersonajes = function(){
   var url = "http://swapi.co/api/people/";
   //recibe dos parámetros, el primero es la url y luego la función del success
-  $.get(url, function(response){
+  //específicamente pedimos y esperamos un JSON.
+  $.getJSON(url, function(response){
     var personajes = response.results;
     var total = response.count;
     mostrarTotalPersonajes(total);
